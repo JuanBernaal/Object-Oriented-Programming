@@ -8,7 +8,7 @@ void printLinea(){
 int main(){
 Aeropuerto aeropuerto;
 
-    Aeronave aeronave1("Aeronave 1", &aeropuerto.torreControl);
+    /* Aeronave aeronave1("Aeronave 1", &aeropuerto.torreControl);
     Aeronave aeronave2("Aeronave 2", &aeropuerto.torreControl);
     Aeronave aeronave3("Aeronave 3", &aeropuerto.torreControl);
 
@@ -28,7 +28,7 @@ Aeropuerto aeropuerto;
     aeronave1.agregarVuelo(vuelo2);
     aeronave1.agregarVuelo(vuelo3);
 
-/*     aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave1, "Puerta 1");
+    aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave1, "Puerta 1");
     aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave2, "Puerta 2");
     aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave3, "Puerta 3");
 
@@ -46,7 +46,7 @@ Aeropuerto aeropuerto;
 
     puerta1.anunciarEmbarque("Puerta 1");
     puerta2.anunciarEmbarque("Puerta 2");
-    puerta3.anunciarEmbarque("Puerta 3"); */
+    puerta3.anunciarEmbarque("Puerta 3");
 
     bool salir = true;
     int selec;
@@ -72,6 +72,27 @@ Aeropuerto aeropuerto;
         }
           printLinea();
     }
-    printf("Hola perra\n");
+    printf("Hola perra\n");  */
+
+    string nombre = "Juan";
+    string apellido = "Perez";
+    int edad = 30;
+    string cedula = "1234567890";
+    string fechaNacimiento = "01/01/1990";
+    string genero = "Masculino";
+    string direccion = "Calle Principal 123";
+    string numTel = "555-123-4567";
+    string correo = "juan@example.com";
+    string nacionalidad = "Mexicana";
+    string infoMedica = "Ninguna";
+    int numMaletasBodega = 2;
+
+    Pasajero juanPerez(nombre, apellido, edad, cedula, fechaNacimiento, genero, direccion, numTel, correo, nacionalidad, infoMedica, numMaletasBodega);
+
+    std::cout << "Nombre: " << juanPerez.getNombre() << std::endl;
+    std::cout << "Edad: " << juanPerez.getEdad() << std::endl;
+    std::cout << "Número de Maletas de Bodega: " << juanPerez.getNumMaletas() << std::endl;
+
+
     return 0;
 }

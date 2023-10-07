@@ -7,6 +7,9 @@
 #include "aeronave.h"
 using namespace std;
 
+class MediatorDeTrafico; // Declaración previa de MediatorDeTrafico
+class Aeronave; // Declaración previa de Aeronave
+
 
 class TorreControl : public MediadorTrafico{
     private:

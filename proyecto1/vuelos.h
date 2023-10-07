@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "tripulante.h"
+#include "pasajero.h"
 #include<vector>
 using namespace std;
 
