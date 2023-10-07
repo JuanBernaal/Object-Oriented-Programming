@@ -12,7 +12,7 @@ class Persona{
     public:
         Persona();
         Persona(const string& nombre, string& apellido, int edad, string& cedula, string& fechaNacimiento, string& genero, string& direccion, string& numTel, string& correo);
-        string getNombre() const;
+        string getNombre();
         int getEdad();
         virtual void mostrarInfo();
 };

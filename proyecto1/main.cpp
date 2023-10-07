@@ -74,25 +74,48 @@ Aeropuerto aeropuerto;
     }
     printf("Hola perra\n");  */
 
-    string nombre = "Juan";
-    string apellido = "Perez";
-    int edad = 30;
-    string cedula = "1234567890";
-    string fechaNacimiento = "01/01/1990";
-    string genero = "Masculino";
-    string direccion = "Calle Principal 123";
-    string numTel = "555-123-4567";
-    string correo = "juan@example.com";
-    string nacionalidad = "Mexicana";
-    string infoMedica = "Ninguna";
-    int numMaletasBodega = 2;
+    string nombrePasajero = "Juan";
+    string apellidoPasajero = "Perez";
+    int edadPasajero = 30;
+    string cedulaPasajero = "1234567890";
+    string fechaNacimientoPasajero = "01/01/1990";
+    string generoPasajero = "Masculino";
+    string direccionPasajero = "Calle Principal 123";
+    string numTelPasajero = "555-123-4567";
+    string correoPasajero = "juan@example.com";
+    string nacionalidadPasajero = "Mexicana";
+    string infoMedicaPasajero = "Ninguna";
+    int numMaletasBodegaPasajero = 2;
 
-    Pasajero juanPerez(nombre, apellido, edad, cedula, fechaNacimiento, genero, direccion, numTel, correo, nacionalidad, infoMedica, numMaletasBodega);
+    // Crear un objeto Pasajero usando el constructor
+    Pasajero juanPerez(nombrePasajero, apellidoPasajero, edadPasajero, cedulaPasajero, fechaNacimientoPasajero, generoPasajero, direccionPasajero, numTelPasajero, correoPasajero, nacionalidadPasajero, infoMedicaPasajero, numMaletasBodegaPasajero);
 
-    std::cout << "Nombre: " << juanPerez.getNombre() << std::endl;
-    std::cout << "Edad: " << juanPerez.getEdad() << std::endl;
-    std::cout << "Número de Maletas de Bodega: " << juanPerez.getNumMaletas() << std::endl;
+    cout << "Nombre: " << juanPerez.getNombre() << endl;
+    cout << "Edad: " << juanPerez.getEdad() << endl;
+    cout << "Número de Maletas de Bodega: " << juanPerez.getNumMaletas() << endl;
 
+    // Parámetros para crear un objeto Tripulante
+    string nombreTripulante = "Ana";
+    string apellidoTripulante = "Gomez";
+    int edadTripulante = 28;
+    string cedulaTripulante = "2345678901";
+    string fechaNacimientoTripulante = "15/05/1995";
+    string generoTripulante = "Femenino";
+    string direccionTripulante = "Calle Secundaria 456";
+    string numTelTripulante = "555-987-6543";
+    string correoTripulante = "ana@example.com";
+    string cargoTripulante = "Azafata";
+    int xpTripulante = 3;
+    int hrsDiariasTripulante = 8;
+
+    // Crear un objeto Tripulante usando el constructor
+    Tripulante ana(nombreTripulante, apellidoTripulante, edadTripulante, cedulaTripulante, fechaNacimientoTripulante, generoTripulante, direccionTripulante, numTelTripulante, correoTripulante, cargoTripulante, xpTripulante, hrsDiariasTripulante);
+
+    cout << "Nombre: " << ana.getNombre() << endl;
+    cout << "Edad: " << ana.getEdad() << endl;
+    cout << "Cargo: " << ana.getCargo() << endl;
+    cout << "Experiencia: " << ana.getXp() << " años" << endl;
+    cout << "Horas Diarias de Trabajo: " << ana.getHorasDiarias() << " horas" << endl;  
 
     return 0;
 }

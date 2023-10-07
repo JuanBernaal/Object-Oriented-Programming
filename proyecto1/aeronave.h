@@ -6,6 +6,7 @@
 #include "vuelos.h"
 #include "mediadorTrafico.h"
 #include "puertaEmbarque.h"
+#include "helicoptero.h"
 
 using namespace std;
 class MediatorDeTrafico; // Declaración previa de MediatorDeTrafico
@@ -27,8 +28,7 @@ class Aeronave{
         bool estado; 
 
         Aeronave();
-        Aeronave(const string& nombre, MediadorTrafico* mediator);
-
+        Aeronave(string& marca, string& modelo, int capacidad, int velMax, int autonomia, int fabricationYear, vector<Vuelos>& vuelos, int sillasDispo, MediadorTrafico* mediator);
         void despegar();
 
         void aterrizar();
@@ -41,6 +41,7 @@ class Aeronave{
 
         void agregarVuelo(Vuelos &v);
 
+        int getCapacidad();
 };
 
 

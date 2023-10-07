@@ -15,7 +15,7 @@ Persona::Persona(const string& nombre, string& apellido, int edad, string& cedul
     this->correo = correo;
 }
 
-string Persona::getNombre() const{
+string Persona::getNombre(){
     return this->nombre;
 }
 

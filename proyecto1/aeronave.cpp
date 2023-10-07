@@ -4,7 +4,7 @@ void Aeronave::enviarMensaje(const string& mensaje) {
         mediador->enviarMensaje(mensaje, this);
 }
 
-Aeronave:: Aeronave(const string& nombre, MediadorTrafico* mediator) : nombre(nombre), mediador(mediator) {
+Aeronave::Aeronave(string& marca, string& modelo, int capacidad, int velMax, int autonomia, int fabricationYear, vector<Vuelos>& vuelos, int sillasDispo, MediadorTrafico* mediator){
     mediator->registrarAeronave(this);
     marca = "Avianca";
     modelo = "2019";
@@ -54,3 +54,6 @@ void Aeronave::agregarVuelo(Vuelos &v){
 }
 
 
+int Aeronave::getCapacidad(){
+    return this->capacidad;
+}
