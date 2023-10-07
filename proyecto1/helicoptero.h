@@ -5,6 +5,7 @@
 #include "aeronave.h"
 using namespace std;
 
+class Aeronave;
 
 class Helicoptero : public Aeronave{
 private:

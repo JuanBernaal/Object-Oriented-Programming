@@ -6,9 +6,9 @@
 #include "vuelos.h"
 #include "mediadorTrafico.h"
 #include "puertaEmbarque.h"
-#include "helicoptero.h"
-#include "avion.h"
-#include "jet.h"
+class Helicoptero;
+class Avion;
+class JetPrivado;
 
 using namespace std;
 class MediatorDeTrafico; // Declaración previa de MediatorDeTrafico
