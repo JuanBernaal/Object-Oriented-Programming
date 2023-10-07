@@ -9,6 +9,7 @@
 
 using namespace std;
 class MediatorDeTrafico; // Declaración previa de MediatorDeTrafico
+class Vuelos;
 
 
 class Aeronave{
@@ -22,9 +23,10 @@ class Aeronave{
 
         string marca, modelo, nombre;
         int capacidad, autonomia, fabricacion, velMax, sillasDispo;
-        //vector<Vuelos> vuelos;
+        vector<Vuelos> vuelos;
+        bool estado; 
 
-        
+        Aeronave();
         Aeronave(const string& nombre, MediadorTrafico* mediator);
 
         void despegar();
@@ -36,6 +38,8 @@ class Aeronave{
         void recibirMensaje(const string& mensaje);
 
         void asignarPuertaDeEmbarque(const string& puerta);
+
+        void agregarVuelo(Vuelos &v);
 
 };
 

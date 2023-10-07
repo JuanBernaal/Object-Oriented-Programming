@@ -7,10 +7,12 @@
 using namespace std;
 
 class Aeropuerto{
+    vector<string> vuelos;
     public:
         TorreControl torreControl;
         
-    Aeropuerto(){}
+    Aeropuerto();
+    void agregarDestino(string n);
 };
 
 

@@ -9,9 +9,13 @@ Aeronave:: Aeronave(const string& nombre, MediadorTrafico* mediator) : nombre(no
     marca = "Avianca";
     modelo = "2019";
     capacidad = 700;
-    //vuelos = {};
+    vuelos = {};
+    estado = true;
 }
 
+Aeronave:: Aeronave(){
+
+}
 void Aeronave::despegar() {
     cout << nombre << ": Despegando." << endl;
     enviarMensaje("Despegando");
@@ -34,6 +38,19 @@ void Aeronave::recibirMensaje(const string& mensaje) {
 void Aeronave::asignarPuertaDeEmbarque(const string& puerta) {
     cout << nombre << " se dirige a la puerta de embarque: " << puerta << endl;
     puerta_de_embarque = puerta;
+}
+
+void Aeronave::agregarVuelo(Vuelos &v){
+    bool flag = estado;
+
+    for(int i = 0; i < vuelos.size() && flag; i++){
+        if(v.identificacion == vuelos[i].identificacion)
+            flag = false;
+    }
+    if(vuelos.size() < 3 && flag)
+        vuelos.push_back(v);
+    else
+        printf("La aeronave esta totalmente asignada\n");
 }
 
 

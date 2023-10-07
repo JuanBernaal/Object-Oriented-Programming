@@ -2,12 +2,25 @@
 #define VUELOS
 
 #include <iostream>
-#include "aeronave.h"
+
 #include "tripulante.h"
+#include<vector>
 using namespace std;
 
-class Vuelos{
+class Persona;
+class Tripulante;
 
+class Vuelos{
+    public:
+        int identificacion, capacidad, numPasajeros;
+        string fecha, ciudadOrigen, ciudadDestino, hora;
+        vector<Tripulante> tripulantes;
+
+        Vuelos(int a, string cD, string h, int id);
+
+        void agregarPasajero();
+
+        void printVuelo();
 };
 
 #endif
