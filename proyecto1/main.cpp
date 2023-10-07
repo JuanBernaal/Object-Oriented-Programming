@@ -1,4 +1,5 @@
 #include "aeropuerto.h"
+#include <algorithm>
 
 void printLinea(){
     printf("===========================================================================================\n");
@@ -16,13 +17,16 @@ Aeropuerto aeropuerto;
     PuertaEmbarque puerta3(3);
 
     Vuelos vuelo1(aeronave1.capacidad, "BGO", "12:00", 61281);
-    vuelo1.printVuelo();
-    aeropuerto.agregarDestino(vuelo1.ciudadDestino);
+    Vuelos vuelo2(aeronave2.capacidad, "NYK", "15:00", 443);
+    Vuelos vuelo3(aeronave3.capacidad, "MED", "8:00", 32533);
+
+    aeropuerto.agregarDestino(&vuelo1);
+    aeropuerto.agregarDestino(&vuelo2);
+    aeropuerto.agregarDestino(&vuelo3);
 
     aeronave1.agregarVuelo(vuelo1);
-    aeronave1.agregarVuelo(vuelo1);
-    aeronave1.agregarVuelo(vuelo1);
-    aeronave1.agregarVuelo(vuelo1);
+    aeronave1.agregarVuelo(vuelo2);
+    aeronave1.agregarVuelo(vuelo3);
 
 /*     aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave1, "Puerta 1");
     aeropuerto.torreControl.asignarPuertaDeEmbarque(&aeronave2, "Puerta 2");
@@ -54,7 +58,9 @@ Aeropuerto aeropuerto;
         switch (selec)
         {
         case 1:
-            printf("Holaa\n");
+            printf("Seleccione el destino\n");
+            aeropuerto.printDestinos();
+
             break;
         case 2:
             printf("Te esperamos para la proxima, saliendo...");

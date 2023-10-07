@@ -7,12 +7,13 @@
 using namespace std;
 
 class Aeropuerto{
-    vector<string> vuelos;
+    vector<Vuelos*> vuelos;
     public:
         TorreControl torreControl;
         
     Aeropuerto();
-    void agregarDestino(string n);
+    void agregarDestino(Vuelos* v);
+    void printDestinos();
 };
 
 
