@@ -1,20 +1,22 @@
 #ifndef AVION
 #define AVION
 
-#include<iostream>
+#include <iostream>
 #include "aeronave.h"
 using namespace std;
 
 class Aeronave;
 
-class Avion : public Aeronave{
+class Avion : public Aeronave
+{
 private:
     int altitudMax, numMotores, categoria;
+
 public:
-    Avion(string& marca, string& modelo, int capacidad, int velMax, int autonomia, int fabricationYear, vector<Vuelos>& vuelos, int sillasDispo, MediadorTrafico* mediator, int altitudMax, int numMotores, int categoria);
+    Avion(const string &marca, int capacidad, MediadorTrafico *mediator);
     int getAltitudMax(), getNumMotores(), getCategoria();
+    void printInfo() override;
+    void obtenerDatos() override;
 };
-
-
 
 #endif

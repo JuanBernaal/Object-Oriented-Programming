@@ -14,37 +14,73 @@ using namespace std;
 class MediatorDeTrafico; // Declaración previa de MediatorDeTrafico
 class Vuelos;
 
+class Aeronave
+{
+private:
+    MediadorTrafico *mediador;
+    string puerta_de_embarque;
 
-class Aeronave{
-    private:
-        MediadorTrafico* mediador;
-        string puerta_de_embarque;
+    void enviarMensaje(const string &mensaje);
 
-        void enviarMensaje(const string& mensaje);
-    
-    public:
+public:
+    string marca, modelo, nombre;
+    int capacidad, autonomia, fabricacion, velMax, sillasDispo, id;
+    vector<Vuelos *> vuelos;
+    bool estado;
 
-        string marca, modelo, nombre;
-        int capacidad, autonomia, fabricacion, velMax, sillasDispo;
-        vector<Vuelos> vuelos;
-        bool estado; 
+    Aeronave();
+    Aeronave(const string &marca, int capacidad, MediadorTrafico *mediator);
+    void despegar();
 
-        Aeronave();
-        Aeronave(string& marca, string& modelo, int capacidad, int velMax, int autonomia, int fabricationYear, vector<Vuelos>& vuelos, int sillasDispo, MediadorTrafico* mediator);
-        void despegar();
+    void aterrizar();
 
-        void aterrizar();
+    void actualizarPosicion(const string &mensaje);
 
-        void actualizarPosicion(const string& mensaje);
+    void recibirMensaje(const string &mensaje);
 
-        void recibirMensaje(const string& mensaje);
+    void asignarPuertaDeEmbarque(int puerta);
 
-        void asignarPuertaDeEmbarque(const string& puerta);
+    void agregarVuelo(Vuelos *v);
 
-        void agregarVuelo(Vuelos &v);
+    virtual void printInfo();
 
-        int getCapacidad();
+    void eliminarVuelo();
+
+    bool tieneVuelos();
+
+    int getCapacidad();
+
+    void setModelo(const string s);
+
+    void setNombre(const string s);
+
+    void setAutonomia(int i);
+
+    void setFabricacion(int i);
+
+    void setVelMax(int i);
+
+    void setSillasDispo(int i);
+
+    void setEstado(bool b);
+
+    string getMarca();
+
+    string getModelo();
+
+    string getNombre();
+
+    int getAutonomia();
+
+    int getFabricacion();
+
+    int getVelMax();
+
+    int getSillasDispo();
+
+    bool getEstado();
+
+    virtual void obtenerDatos();
 };
-
 
 #endif
