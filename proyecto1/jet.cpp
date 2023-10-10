@@ -44,7 +44,12 @@ void JetPrivado::printInfo()
  */
 void JetPrivado::obtenerDatos()
 {
-    cout << "Ingrese el nombre del propietario: ";
-    cin >> this->propietario;
-    cout << endl;
+    try {
+        cout << "Ingrese el nombre del propietario: ";
+        cin >> this->propietario;
+        cout << endl;
+    } catch (const exception& e) {
+        cerr << "Error: " << e.what() << endl;
+    }
 }
+

@@ -61,11 +61,11 @@ void Persona::getInformacion()
 {
     cout << "Nombre: " << nombre << endl;
     cout << "Apellido: " << apellido << endl;
-    cout << "Edad: " << edad << " años" << endl;
-    cout << "Cédula: " << cedula << endl;
+    cout << "Edad: " << edad << " years" << endl;
+    cout << "Cedula: " << cedula << endl;
     cout << "Fecha de Nacimiento: " << fechaNacimiento << endl;
-    cout << "Género: " << genero << endl;
-    cout << "Dirección: " << direccion << endl;
-    cout << "Número de Teléfono: " << numTel << endl;
-    cout << "Correo Electrónico: " << correo << endl;
+    cout << "Genero: " << genero << endl;
+    cout << "Direccion: " << direccion << endl;
+    cout << "Numero de Telefono: " << numTel << endl;
+    cout << "Correo Electronico: " << correo << endl;
 }

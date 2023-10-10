@@ -50,19 +50,19 @@ Pasajero Pasajero::obtenerDatosPasajero()
 
     cin.ignore(); // Limpiar el buffer de entrada
 
-    cout << "Ingrese la cédula del pasajero: ";
+    cout << "Ingrese la cedula del pasajero: ";
     getline(cin, cedula);
 
     cout << "Ingrese la fecha de nacimiento del pasajero: ";
     getline(cin, fechaNacimiento);
 
-    cout << "Ingrese el género del pasajero: ";
+    cout << "Ingrese el genero del pasajero: ";
     getline(cin, genero);
 
-    cout << "Ingrese la dirección del pasajero: ";
+    cout << "Ingrese la direccion del pasajero: ";
     getline(cin, direccion);
 
-    cout << "Ingrese el número de teléfono del pasajero: ";
+    cout << "Ingrese el numero de telefono del pasajero: ";
     getline(cin, numTel);
 
     cout << "Ingrese el correo del pasajero: ";
@@ -71,10 +71,10 @@ Pasajero Pasajero::obtenerDatosPasajero()
     cout << "Ingrese la nacionalidad del pasajero: ";
     getline(cin, nacionalidad);
 
-    cout << "Ingrese la información médica del pasajero: ";
+    cout << "Ingrese la informacion medica del pasajero: ";
     getline(cin, infoMedica);
 
-    cout << "Ingrese el número de maletas de bodega del pasajero: ";
+    cout << "Ingrese el numero de maletas de bodega del pasajero: ";
     cin >> numMaletasBodega;
 
     Pasajero pasajero(nombre, apellido, edad, cedula, fechaNacimiento, genero, direccion, numTel, correo, nacionalidad, infoMedica, numMaletasBodega);
@@ -117,5 +117,5 @@ void Pasajero::getInformacion()
     Persona::getInformacion();
     cout << "Numero de Maletas en Bodega: " << numMaletasBodega << endl;
     cout << "Nacionalidad: " << nacionalidad << endl;
-    cout << "Informacion Medica: " << infoMedica;
+    cout << "Informacion Medica: " << infoMedica << endl;
 }

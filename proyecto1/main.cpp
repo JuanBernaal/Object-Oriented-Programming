@@ -1,149 +1,123 @@
 #include "aeropuerto.h"
 
-#include <algorithm>
+void agregarNaves_(Aeropuerto &aeropuerto);
+void reserva(Aeropuerto &aeropuerto);
 
-void printLinea();
-void reserva();
-void modificarAeropuerto();
-void agregarNaves();
-
-Aeropuerto &aeropuerto = Aeropuerto::obtenerInstancia();
-Aeronave *jet = new JetPrivado("Jet", 100, &aeropuerto.torreControl);
-Aeronave *Heli = new Helicoptero("Helicoptero", 6, &aeropuerto.torreControl);
-Aeronave *avion = new Avion("Avion", 6, &aeropuerto.torreControl);
+void printLinea()
+{
+    printf("===========================================================================================\n\n");
+}
 
 int main()
 {
-    bool salir = true;
-    int selec;
+    Aeropuerto &aeropuerto = Aeropuerto::obtenerInstancia();
+    int cases, num;
+    bool flag = true;
+    system("cls");
     printLinea();
-    while (salir)
+    string npas;
+    while (flag)
     {
-        printf("Bienvenido\n1. Modificar aeropuerto\n2. reservar vuelo\n3. Simular\n4. Salir.\n");
-        cin >> selec;
-        switch (selec)
+        printf("Bienvenido\n1. Modificar vuelos\n2. Agregar naves\n3. Simular\n4. reservar vuelo\n5. Consultar info\n6. Salir.\n");
+        cin >> cases;
+        cout << endl;
+        bool flag2 = true;
+        switch (cases)
         {
         case 1:
-            modificarAeropuerto();
-            break;
-        case 2:
-            if (!aeropuerto.disponibilidadVuelos())
-                printf("No hay vuelos disponibles aun\n");
-            else
+            while (flag2)
             {
-                reserva();
-                printf("Seleccione el destino\n");
-                aeropuerto.printDestinos();
+                printf("Agregue vuelos\n");
+                int id, capacidad, numPasajeros;
+                string fecha, ciudadOrigen, ciudadDestino, hora, ej;
+
+                try
+                {
+                    cout << "Ingrese la identificacion del vuelo: ";
+                    cin >> ej;
+                    id = stoi(ej);
+                }
+                catch (const invalid_argument &e)
+                {
+                    cerr << "Error argumento invalido " << e.what() << "Ingrese un numero entero" << endl;
+                    cin >> id;
+                }
+
+                cin.ignore(); // Limpiar el buffer de entrada
+
+                cout << "Ingrese la fecha del vuelo (YYYY-MM-DD): ";
+                getline(cin, fecha);
+
+                cout << "Ingrese la ciudad de destino: ";
+                getline(cin, ciudadDestino);
+
+                cout << "Ingrese la hora del vuelo (HH:MM): ";
+                getline(cin, hora);
+
+                // Crear y devolver un objeto Vuelos con los datos ingresados
+                Vuelos *tmp = new Vuelos(id, fecha, ciudadDestino, hora);
+                aeropuerto.agregarDestino(tmp);
+                printf("Salir?\n1. Si\n2. No\n");
+                cin >> num;
+                if (num == 1)
+                    flag2 = false;
             }
+        case 2:
+            agregarNaves_(aeropuerto);
             break;
         case 3:
+            aeropuerto.asignarVuelo();
             aeropuerto.torreControl.simulacion();
+            printf("Deseas continuar?\n1. Si\n");
+            cin >> npas;
             break;
         case 4:
-            printf("Te esperamos para la proxima, saliendo...\n");
-            salir = false;
+            reserva(aeropuerto);
+            break;
+        case 5:
+            system("cls");
+            printLinea();
+            while (flag2)
+            {
+                printf("1. Consultar Vuelos\n2. Consultar Puertas\n3. Consultar Aeronaves\n4. Salir\n");
+                cin >> num;
+                switch (num)
+                {
+                case 1:
+                    aeropuerto.printDestinos();
+                    break;
+                case 2:
+                    aeropuerto.torreControl.mostrarPuertas();
+                    break;
+                case 3:
+                    aeropuerto.torreControl.mostrarAviones();
+                    break;
+                default:
+                    flag2 = false;
+                    break;
+                }
+                printLinea();
+            }
+            break;
         default:
-            printf("Seleccion erronea, seleccione una opcion valida...\n");
+            flag = false;
             break;
         }
+        system("cls");
         printLinea();
     }
-    printf("Hola perra\n");
 
     return 0;
 }
 
-void reserva()
+void agregarNaves_(Aeropuerto &aeropuerto)
 {
-    Pasajero pasajero;
-    pasajero.obtenerDatosPasajero();
-    printLinea();
-    bool flag = true;
-    while (flag) // verificar datos
-    {
-        pasajero.getInformacion();
-        printf("Los datos son correctos?\n1. Si\n2. No\n");
-        int s;
-        cin >> s;
-        switch (s)
-        {
-        case 1:
-            flag = false;
-            break;
-        case 2:
-            pasajero.obtenerDatosPasajero();
-            break;
-        default:
-            flag = false;
-            break;
-        }
-    }
-}
-
-void modificarAeropuerto()
-{
-    int cases;
-    printLinea();
-    printf("Menu:\n\n1.Agregar Vuelos\n2.Agregar Naves\n3.Salir\n");
-    cin >> cases;
-    printLinea();
-    bool flag1 = true;
-    switch (cases)
-    {
-    case 1:
-        if (!aeropuerto.disponibilidadAeronaves())
-        {
-            printf("No hay aeronaves disponibles\n");
-            break;
-        }
-        Vuelos *tmp;
-        tmp->obtenerDatosVuelo();
-        flag1 = true;
-        while (flag1) // verificar datos
-        {
-            tmp->printVuelo();
-            printf("Los datos son correctos?\n1. Si\n2. No\n");
-            int s;
-            cin >> s;
-            switch (s)
-            {
-            case 1:
-                flag1 = false;
-                break;
-            case 2:
-                tmp->obtenerDatosVuelo();
-                break;
-            default:
-                flag1 = false;
-                break;
-            }
-            printLinea();
-        }
-        // AGREGAR VUELO A AVION
-        aeropuerto.torreControl.seleccionarAeronave(tmp);
-        aeropuerto.agregarDestino(tmp);
-        break;
-    case 2:
-        agregarNaves();
-        break;
-    case 3:
-        printf("saliendo\n");
-        flag1 = false;
-        break;
-    default:
-        printf("seleccion erronea, seleccione otra opcion\n");
-        break;
-    }
-    printLinea();
-}
-
-void agregarNaves()
-{
-    int cases, capacidad;
+    int cases, capacidad, num;
     bool flag2 = true;
-    printLinea();
     string n;
     Aeronave *tmp;
+    system("cls");
+    printLinea();
     while (flag2)
     {
         printf("Agregar: \n1. Avion\n2. Jet\n3. Helicotero\n4. Salir\n");
@@ -151,32 +125,43 @@ void agregarNaves()
         switch (cases)
         {
         case 1:
+
             printLinea();
             printf("Ingrese la marca del avion\n");
             cin >> n;
             printf("Ingrese la capacidad del avion\n");
             cin >> capacidad;
             tmp = new Avion(n, capacidad, &aeropuerto.torreControl);
-            aeropuerto.torreControl.registrarAvion(tmp);
-            tmp->obtenerDatos();
+            printf("Quieres especificar?\n1. Si\n2. No\n");
+            cin >> num;
+            if (num == 1)
+                tmp->obtenerDatos();
             break;
         case 2:
+
             printLinea();
             printf("Ingrese la marca del Jet\n");
             cin >> n;
             printf("Ingrese la capacidad del Jet\n");
-            cin >> n;
+            cin >> capacidad;
             tmp = new JetPrivado(n, capacidad, &aeropuerto.torreControl);
-            // Falta especificar
+            printf("Quieres especificar?\n1. Si\n2. No\n");
+            cin >> num;
+            if (num == 1)
+                tmp->obtenerDatos();
             break;
         case 3:
+
             printLinea();
             printf("Ingrese la marca del Helicoptero\n");
             cin >> n;
             printf("Ingrese la capacidad del Helicoptero\n");
-            cin >> n;
+            cin >> capacidad;
             tmp = new Helicoptero(n, capacidad, &aeropuerto.torreControl);
-            // Falta especificar
+            printf("Quieres especificar?\n1. Si\n2. No\n");
+            cin >> num;
+            if (num == 1)
+                tmp->obtenerDatos();
             break;
         case 4:
             printf("saliendo\n");
@@ -191,7 +176,42 @@ void agregarNaves()
     }
 }
 
-void printLinea()
+void reserva(Aeropuerto &aeropuerto)
 {
-    printf("===========================================================================================\n\n");
+    Pasajero pasajero;
+    pasajero.obtenerDatosPasajero();
+    system("cls");
+    printLinea();
+    bool flag = true;
+    while (flag) // verificar datos
+    {
+        pasajero.getInformacion();
+        printf("Los datos son correctos?\n1. Si\n2. No\n");
+        int s;
+        cin >> s;
+        switch (s)
+        {
+        case 2:
+            pasajero.obtenerDatosPasajero();
+            break;
+        default:
+            flag = false;
+            break;
+        }
+    }
+    printf("Seleccione su vuelo\n");
+    aeropuerto.printDestinos();
+    int selec;
+    cin >> selec;
+    selec--;
+    Vuelos *tmp = aeropuerto.obtenerVuelo(selec);
+    pasajero.asignarVuelo(tmp);
+    printf("El vuelo ha sido reservado, desea consultar?\n1. Si\n2. No\n");
+    cin >> selec;
+    string nxy;
+    if(selec == 1){
+        tmp->printVuelo();
+        printf("Deseas continuar?\n1. Si\n");
+        cin >> nxy;
+    }
 }

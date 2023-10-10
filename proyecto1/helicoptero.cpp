@@ -1,5 +1,5 @@
 #include "helicoptero.h"
-
+#include <limits>
 /**
  * Este es el constructor de la clase Helicóptero, que toma como marca, capacidad y mediador.
  * parámetros.
@@ -59,13 +59,29 @@ void Helicoptero::printInfo()
  */
 void Helicoptero::obtenerDatos()
 {
-    cout << "Ingrese el numero de rotores: ";
-    cin >> this->numRotores;
-    cout << endl;
-    cout << "Ingrese la maxima elevacion: ";
-    cin >> this->maxElevacion;
-    cout << endl;
-    cout << "Ingrese el tipo de uso: ";
-    cin >> this->uso;
-    cout << endl;
+    try {
+        cout << "Ingrese el numero de rotores: ";
+        cin >> this->numRotores;
+        if (cin.fail()) {
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            throw invalid_argument("Entrada no valida para numero de rotores.");
+        }
+        
+        cout << endl;
+        cout << "Ingrese la maxima elevacion: ";
+        cin >> this->maxElevacion;
+        if (cin.fail()) {
+            cin.clear(); // Restaurar el estado de cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            throw invalid_argument("Entrada no valida para maxima elevacion.");
+        }
+        
+        cout << endl;
+        cout << "Ingrese el tipo de uso: ";
+        cin >> this->uso;
+        cout << endl;
+    } catch (const invalid_argument& e) {
+        cerr << "Error: " << e.what() << endl;
+    }
 }

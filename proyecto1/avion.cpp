@@ -1,5 +1,5 @@
 #include "avion.h"
-
+#include <limits>
 /**
  * El constructor Avion inicializa un objeto Avion con una marca, capacidad y mediador determinados.
  *
@@ -59,13 +59,37 @@ void Avion::printInfo()
  */
 void Avion::obtenerDatos()
 {
-    cout << "Ingrese el numero de motores: ";
-    cin >> this->numMotores;
-    cout << endl;
-    cout << "Ingrese la categoria: ";
-    cin >> this->categoria;
-    cout << endl;
-    cout << "Ingrese la altitud maxima: ";
-    cin >> this->altitudMax;
-    cout << endl;
+    try
+    {
+        cout << "Ingrese el numero de motores: ";
+        cin >> this->numMotores;
+        if(cin.fail()) 
+        {
+            throw runtime_error("Entrada no valida. Debe ingresar un numero entero.");
+        }
+        cout << endl;
+
+        cout << "Ingrese la categoria: ";
+        cin >> this->categoria;
+        if(cin.fail())  
+        {
+            throw runtime_error("Entrada no valida. Debe ingresar un numero entero.");
+        }
+        cout << endl;
+
+        cout << "Ingrese la altitud maxima: ";
+        cin >> this->altitudMax;
+        if (cin.fail()) 
+        {
+            throw runtime_error("Entrada no valida. Debe ingresar un número entero.");
+        }
+        cout << endl;
+    }
+    catch (const runtime_error &e)
+    {
+        cerr << "Error: " << e.what() << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 }
+
