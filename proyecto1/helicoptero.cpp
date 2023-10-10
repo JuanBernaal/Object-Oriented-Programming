@@ -1,28 +1,64 @@
 #include "helicoptero.h"
 
+/**
+ * Este es el constructor de la clase Helicóptero, que toma como marca, capacidad y mediador.
+ * parámetros.
+ *
+ * @param marca El parámetro "marca" es una cadena que representa la marca o fabricante del
+ * helicóptero.
+ * @param capacidad El parámetro "capacidad" representa el número máximo de pasajeros o el
+ * capacidad máxima de peso del helicóptero. Determina el número máximo de personas o cantidad de
+ * carga que puede transportar el helicóptero.
+ * @param mediator El parámetro "mediador" es un puntero a un objeto de tipo "MediadorTrafico". Es
+ * utilizado para establecer comunicación entre el objeto helicóptero y el objeto mediador de tráfico.
+ */
 Helicoptero::Helicoptero(const string &marca, int capacidad, MediadorTrafico *mediator) : Aeronave(marca, capacidad, mediator)
 {
 }
 
+/**
+ * La función "getNumRotores" devuelve el número de rotores de un helicóptero.
+ *
+ * @return El número de rotores del helicóptero.
+ */
 int Helicoptero::getNumRotores()
 {
     return this->numRotores;
 }
+/**
+ * La función getMaxElevacion devuelve la elevación máxima de un helicóptero.
+ *
+ * @return La elevación máxima del helicóptero.
+ */
 int Helicoptero::getMaxElevacion()
 {
     return this->maxElevacion;
 }
+/**
+ * La función "getUso" devuelve el valor de la variable "uso" en la clase "Helicoptero".
+ *
+ * @return el valor de la variable "uso", que es una cadena.
+ */
 string Helicoptero::getUso()
 {
     return this->uso;
 }
 
+/**
+ * La función "printInfo" en la clase "Helicoptero" llama a la función "printInfo" en la clase "Aeronave"
+ * clase.
+ */
 void Helicoptero::printInfo()
 {
     Aeronave::printInfo();
 }
 
-void Helicoptero::obtenerDatos(){
+/**
+ * La función "obtenerDatos" solicita al usuario ingresar el número de rotores, elevación máxima y
+ * tipo de uso de un objeto helicóptero.
+ */
+void Helicoptero::obtenerDatos()
+{
     cout << "Ingrese el numero de rotores: ";
     cin >> this->numRotores;
     cout << endl;

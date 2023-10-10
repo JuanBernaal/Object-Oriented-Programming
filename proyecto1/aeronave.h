@@ -38,11 +38,13 @@ public:
 
     void recibirMensaje(const string &mensaje);
 
-    void asignarPuertaDeEmbarque(int puerta);
+    void asignarPuertaDeEmbarque(int puerta, int cod, const string &hora);
 
     void agregarVuelo(Vuelos *v);
 
     virtual void printInfo();
+
+    virtual void obtenerDatos() = 0;
 
     void eliminarVuelo();
 
@@ -79,8 +81,6 @@ public:
     int getSillasDispo();
 
     bool getEstado();
-
-    virtual void obtenerDatos();
 };
 
 #endif

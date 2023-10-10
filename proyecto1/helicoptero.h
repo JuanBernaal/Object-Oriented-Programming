@@ -20,6 +20,7 @@ public:
     string getUso();
 
     void printInfo() override;
+
     void obtenerDatos() override;
 };
 

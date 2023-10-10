@@ -18,8 +18,6 @@ public:
     string getPropietario();
     void printInfo() override;
     void obtenerDatos() override;
-    void imprimirListaServicios();
-    void imprimirListaDestinos();
 };
 
 #endif
